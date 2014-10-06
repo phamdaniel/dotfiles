@@ -1,0 +1,26 @@
+[user]
+	name = Daniel Pham
+	email = pham.dany@gmail.com
+[credential]
+	helper = osxkeychain
+[color]
+	ui = true
+    diff = auto
+    branch = auto
+    status = auto
+[color "status"]
+    changed = blue 
+    untracked = magenta
+    added = green
+    deleted = red
+[alias]
+    co = checkout
+    cm = commit -m 
+    st = status -sb
+    ra = remote add
+[core]
+    editor = vim
+[push]
+    default = simple
+[difftool]
+    prompt = false

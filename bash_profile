@@ -41,6 +41,7 @@ export PATH="$PATH:$HOME/bin:/usr/local/bin"
 
 # Aliases
 alias ls="ls -G"
-alias lsa="ls -la"
+alias ll="ls -la"
 alias ..="cd .."
 alias cat="pygmentize"
+alias gs="git status -sb"
