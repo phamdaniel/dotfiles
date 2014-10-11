@@ -1,10 +1,10 @@
 [user]
-	name = Daniel Pham
-	email = pham.dany@gmail.com
+    name = Daniel Pham
+    email = pham.dany@gmail.com
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [color]
-	ui = true
+    ui = true
     diff = auto
     branch = auto
     status = auto
@@ -12,7 +12,6 @@
     changed = blue 
     untracked = magenta
     added = green
-    deleted = red
 [alias]
     co = checkout
     cm = commit -m 
@@ -24,3 +23,7 @@
     default = simple
 [difftool]
     prompt = false
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f

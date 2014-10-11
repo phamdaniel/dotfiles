@@ -3,15 +3,16 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion
 fi
 
-BLUE="\033[0;34m"
-CYAN="\033[0;36m"
-GREEN="\033[0;32m"
-RED="\033[0:31m"
-MAGENTA="\033[0;35m"
-ORANGE="\033[1;31m"
-YELLOW="\033[0;33m"
-WHITE="\033[0;37m"
-RESET="\033[00m"
+BLUE="\e[0;34m"
+CYAN="\e[0;36m"
+GREEN="\e[0;32m"
+RED="\e[0:31m"
+MAGENTA="\e[0;35m"
+VIOLET="\e[1;35m"
+ORANGE="\e[1;31m"
+YELLOW="\e[0;33m"
+WHITE="\e[0;37m"
+RESET="\e[00m"
 
 remote_git_color() {
     if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then	
@@ -21,13 +22,13 @@ remote_git_color() {
 
         if [ "$LOCAL" = "$REMOTE" ]; then
             # Up-to-date
-            echo -e $BLUE
+            echo -e $CYAN
         elif [ "$LOCAL" = "$BASE" ]; then
             # Need to pull
             echo -e $MAGENTA
         elif [ "$REMOTE" = "$BASE" ]; then
             # Need to push
-            echo -e $GREEN
+            echo -e $YELLOW
         else
             # Diverged
             echo -e $RED
@@ -76,26 +77,26 @@ prompt_git() {
                       git rev-parse --short HEAD 2> /dev/null || \
                       echo '(unknown)')";
         [ -n "${s}" ] && s="${s}";
-        echo -e " (${1}${branchName}${blue}${s})";
+        echo -e " (${branchName}${s})";
     else
         return;
     fi;
 }
 
 #command prompt
-PS1="${ORANGE}\u${RESET}@${YELLOW}\h ${WHITE}> "
-PS1+="${CYAN}[\w]"
-PS1+="\[\$(remote_git_color)\$(prompt_git)"
-PS1+="${RESET}\n$ "
+PS1="$VIOLET\u@\h $RED> "
+PS1+="$BLUE[\w]"
+PS1+="\$(remote_git_color)\$(prompt_git)"
+PS1+="$RESET\n$ "
 export PS1
 
 #PATH additions
-export PATH="$PATH:$HOME/bin:/usr/local/bin"
+export PATH="/usr/local/bin:$HOME/bin:$PATH"
 
 # Aliases
 alias ls="ls -G"
 alias ll="ls -la"
 alias ..="cd .."
-alias cat="pygmentize"
+alias ...="cd ../.."
 alias gs="git status -sb"
-
+alias pcat="pygmentize -g"

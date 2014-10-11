@@ -1,0 +1,8 @@
+# Colors
+--color
+--color-filename=white
+--color-lineno=red
+--color-match=black on_blue
+
+--sort-files
+--smart-case
