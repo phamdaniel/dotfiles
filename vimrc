@@ -1,3 +1,5 @@
+" PATHOGEN 
+execute pathogen#infect()
 filetype plugin indent on
 
 " COLORS
@@ -18,6 +20,7 @@ set cursorline          "hilight current line
 set showmatch           "hilight matching [{()}]
 set ruler               "displays limited minimal line numbering
 set number              "displays line number
+set visualbell          "disables the bell
 set laststatus=2        "displays status bar
 set lazyredraw          "redraws only when needed
 set guioptions-=m       "hides the menu bar
