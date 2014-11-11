@@ -6,7 +6,7 @@ fi
 BLUE="\e[0;34m"
 CYAN="\e[0;36m"
 GREEN="\e[0;32m"
-RED="\e[0:31m"
+RED="\e[0;31m"
 MAGENTA="\e[0;35m"
 VIOLET="\e[1;35m"
 ORANGE="\e[1;31m"
@@ -25,10 +25,10 @@ remote_git_color() {
             echo -e $CYAN
         elif [ "$LOCAL" = "$BASE" ]; then
             # Need to pull
-            echo -e $MAGENTA
+            echo -e $RED
         elif [ "$REMOTE" = "$BASE" ]; then
             # Need to push
-            echo -e $YELLOW
+            echo -e $GREEN
         else
             # Diverged
             echo -e $RED
@@ -85,7 +85,7 @@ prompt_git() {
 
 #command prompt
 PS1="$VIOLET\u@\h $RED> "
-PS1+="$BLUE[\w]"
+PS1+="$YELLOW[\w]"
 PS1+="\$(remote_git_color)\$(prompt_git)"
 PS1+="$RESET\n$ "
 export PS1
@@ -96,6 +96,7 @@ export PATH="/usr/local/bin:$HOME/bin:$PATH"
 # Aliases
 alias ls="ls -G"
 alias ll="ls -la"
+alias rm="rm -r"
 alias ..="cd .."
 alias ...="cd ../.."
 alias gs="git status -sb"

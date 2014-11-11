@@ -14,9 +14,10 @@
     added = green
 [alias]
     co = checkout
-    cm = commit -m 
+    cm = commit -am 
     st = status -sb
     ra = remote add
+    aa = add -A
 [core]
     editor = vim
 [push]
