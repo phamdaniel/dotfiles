@@ -25,7 +25,7 @@ remote_git_color() {
             echo -e $CYAN
         elif [ "$LOCAL" = "$BASE" ]; then
             # Need to pull
-            echo -e $RED
+            echo -e $MAGENTA
         elif [ "$REMOTE" = "$BASE" ]; then
             # Need to push
             echo -e $GREEN
@@ -91,7 +91,7 @@ PS1+="$RESET\n$ "
 export PS1
 
 #PATH additions
-export PATH="/usr/local/bin:$HOME/bin:$PATH"
+export PATH="/usr/local/bin:$HOME/bin:$HOME/sdk/android-sdk-macosx/platform-tools:$PATH"
 
 # Aliases
 alias ls="ls -G"
@@ -101,3 +101,4 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias gs="git status -sb"
 alias pcat="pygmentize -g"
+alias dunnet="emacs -batch -l dunnet"

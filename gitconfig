@@ -14,10 +14,10 @@
     added = green
 [alias]
     co = checkout
-    cm = commit -am 
-    st = status -sb
+    cm = commit -m 
     ra = remote add
     aa = add -A
+    fa = fetch --all
 [core]
     editor = vim
 [push]
@@ -25,6 +25,10 @@
 [difftool]
     prompt = false
 [filter "media"]
-	required = true
+    required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
