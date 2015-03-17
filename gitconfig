@@ -9,26 +9,32 @@
     branch = auto
     status = auto
 [color "status"]
-    changed = blue 
+    changed = blue
     untracked = magenta
     added = green
 [alias]
     co = checkout
-    cm = commit -m 
+    cm = commit -m
     ra = remote add
     aa = add -A
     fa = fetch --all
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit 
+[apply]
+    whitespace = fix
 [core]
+    whitespace = trailing-space
     editor = vim
+[help]
+    autocorrect = 1
 [push]
     default = simple
 [difftool]
     prompt = false
 [filter "media"]
     required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    clean = git media clean %f
+    smudge = git media smudge %f
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
