@@ -1,7 +1,10 @@
 #git completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     source $(brew --prefix)/etc/bash_completion
+    source `brew --prefix`/etc/bash_completion.d/go
 fi
+
+source $HOME/bin/hk-bash-completion.sh
 
 BLUE="\e[0;34m"
 CYAN="\e[0;36m"
@@ -15,7 +18,7 @@ WHITE="\e[0;37m"
 RESET="\e[00m"
 
 remote_git_color() {
-    if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then	
+    if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
         local LOCAL=$(git rev-parse @ 2>/dev/null)
         local REMOTE=$(git rev-parse @{u} 2>/dev/null)
         local BASE=$(git merge-base @ @{u} 2>/dev/null)
@@ -91,7 +94,13 @@ PS1+="$RESET\n$ "
 export PS1
 
 #PATH additions
-export PATH="/usr/local/bin:$HOME/bin:$HOME/sdk/android-sdk-macosx/platform-tools:$PATH"
+PATH="/usr/local/bin:$HOME/bin:$PATH"
+PATH+=":$HOME/sdk/android-sdk-macosx/platform-tools"
+PATH+=":$HOME/sdk/go_appengine"
+PATH+=":$HOME/go_code/bin"
+export PATH
+export GOPATH=$HOME/go_code
+
 
 # Aliases
 alias ls="ls -G"
@@ -102,3 +111,4 @@ alias ...="cd ../.."
 alias gs="git status -sb"
 alias pcat="pygmentize -g"
 alias dunnet="emacs -batch -l dunnet"
+alias pyserver="python -m SimpleHTTPServer"
