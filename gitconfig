@@ -18,14 +18,15 @@
     ra = remote add
     aa = add -A
     fa = fetch --all
+    d = diff
     l = log --pretty=oneline -n 20 --graph --abbrev-commit 
 [apply]
     whitespace = fix
 [core]
-    whitespace = trailing-space
+    whitespace = trailing-space,space-before-tab
     editor = vim
 [help]
-    autocorrect = 1
+    autocorrect = 15
 [push]
     default = simple
 [difftool]
@@ -38,3 +39,5 @@
     clean = git hawser clean %f
     smudge = git hawser smudge %f
     required = true
+[filter "tabspace"]
+    clean = "expand -t 4"
