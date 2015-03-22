@@ -86,8 +86,19 @@ prompt_git() {
     fi;
 }
 
+function cdAndFetch () {
+    # Check if the current directory is in a Git repository.
+    if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+        # Background fetch
+        cd "$@" && (git fetch --all &> /dev/null &)
+    else
+        # Wait for fetch to complete
+        cd "$@" && (git fetch --all &> /dev/null)
+    fi;
+}
+
 #command prompt
-PS1="$VIOLET\u@\h $RED> "
+PS1="$VIOLET\u$WHITE at $RED\h $WHITE> "
 PS1+="$YELLOW[\w]"
 PS1+="\$(remote_git_color)\$(prompt_git)"
 PS1+="$RESET\n$ "
@@ -98,6 +109,7 @@ PATH="/usr/local/bin:$HOME/bin:$PATH"
 PATH+=":$HOME/sdk/android-sdk-macosx/platform-tools"
 PATH+=":$HOME/sdk/go_appengine"
 PATH+=":$HOME/go_code/bin"
+PATH+="/usr/local/heroku/bin"
 export PATH
 export GOPATH=$HOME/go_code
 
@@ -106,9 +118,12 @@ export GOPATH=$HOME/go_code
 alias ls="ls -G"
 alias ll="ls -la"
 alias rm="rm -r"
+alias cd="cdAndFetch"
 alias ..="cd .."
 alias ...="cd ../.."
-alias gs="git status -sb"
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias reload="exec $SHELL -l"
 alias pcat="pygmentize -g"
 alias dunnet="emacs -batch -l dunnet"
 alias pyserver="python -m SimpleHTTPServer"
