@@ -18,7 +18,7 @@
     old = red
     new = green
 [alias]
-    co = "!f() { git checkout -b \"$1\" 2> /dev/null || (git fetch --all &> /dev/null) && git checkout \"$1\"; }; f"
+    co = "!f() { git checkout -b \"$@\" 2> /dev/null || (git fetch --all &> /dev/null) && git checkout \"$@\"; }; f"
     cm = commit -m
     cam = commit -am
     ra = remote add
@@ -31,7 +31,7 @@
     s = status -sb
     p = !"git pull; git submodule foreach git pull origin master"
     d = !"git diff-index --quiet HEAD -- || git --no-pager diff --patch-with-stat"
-    c = "!r() { git --no-pager show HEAD~$1 --patch-with-stat --oneline; }; r"
+    h = "!r() { git --no-pager show HEAD~$1 --patch-with-stat --oneline; }; r"
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
 [apply]
     whitespace = fix
