@@ -31,6 +31,7 @@
     s = status -sb
     p = !"git pull; git submodule foreach git pull origin master"
     d = !"git diff-index --quiet HEAD -- || git --no-pager diff --patch-with-stat"
+    c = "!r() { git --no-pager show HEAD~$1 --patch-with-stat --oneline; }; r"
     l = log --pretty=oneline -n 20 --graph --abbrev-commit
 [apply]
     whitespace = fix

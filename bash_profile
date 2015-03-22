@@ -109,7 +109,7 @@ PATH="/usr/local/bin:$HOME/bin:$PATH"
 PATH+=":$HOME/sdk/android-sdk-macosx/platform-tools"
 PATH+=":$HOME/sdk/go_appengine"
 PATH+=":$HOME/go_code/bin"
-PATH+="/usr/local/heroku/bin"
+PATH+=":/usr/local/heroku/bin"
 export PATH
 export GOPATH=$HOME/go_code
 
