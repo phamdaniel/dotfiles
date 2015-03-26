@@ -113,6 +113,8 @@ PATH+=":/usr/local/heroku/bin"
 export PATH
 export GOPATH=$HOME/go_code
 
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
 
 # Aliases
 alias ls="ls -G"

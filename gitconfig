@@ -18,7 +18,7 @@
     old = red
     new = green
 [alias]
-    co = "!f() { git checkout -b \"$@\" 2> /dev/null || (git fetch --all &> /dev/null) && git checkout \"$@\"; }; f"
+    co = "!f() { git checkout $@ && git fetch --all &> /dev/null; }; f"
     cm = commit -m
     cam = commit -am
     ra = remote add
@@ -27,12 +27,12 @@
     reb = "!r() { git rebase -i HEAD~$1; }; r"
     rs = "!r() { git reset --soft HEAD~$1; }; r"
     rh = "!r() { git reset --hard HEAD~$1; }; r"
-    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
     s = status -sb
     p = !"git pull; git submodule foreach git pull origin master"
-    d = !"git diff-index --quiet HEAD -- || git --no-pager diff --patch-with-stat"
+    d = !"git --no-pager diff --minimal --patch-with-stat"
     h = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --patch-with-stat --oneline; }; r"
-    l = log --oneline -n 20 --graph
+    hf = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --oneline --name-only; }; r"
+    l = !"git --no-pager log --oneline -n 20 --graph"
 [apply]
     whitespace = fix
 [core]
