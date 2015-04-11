@@ -1,4 +1,4 @@
-" PATHOGEN 
+" PATHOGEN
 execute pathogen#infect()
 filetype plugin indent on
 
@@ -11,8 +11,9 @@ set t_Co=256
 " SPACE AND TABS
 set tabstop=4                   "number of visual spaces per TAB
 set softtabstop=4               "number of spaces in tab while editing
+set shiftwidth=4                "reindent width
 set expandtab                   "TAB are now spaces
-set backspace=indent,eol,start  "Backspace through eveyinthing while in insert
+set backspace=indent,eol,start  "Backspace through everything while in insert
 
 " UI CONFIG
 set showcmd             "display command in bottom bar
@@ -33,3 +34,36 @@ set hlsearch            "highlight matches
 set ignorecase          "case insensitive search
 set smartcase
 
+" GENERAL SETTINGS
+let mapleader=","
+set nocompatible
+set title
+set scrolloff=10
+set encoding=utf-8 nobomb
+set wildmenu
+set wildmode=list:longest,full
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+set undolevels=100
+if exists("&undodir")
+    set undodir=~/.vim/undo
+    set undofile
+    set undoreload=50
+endif
+
+" MAPPINGS
+function! StripWhitespace()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+noremap <leader>= ggvG=
+
+noremap <leader>- o<esc>k
+noremap <leader>_ O<esc>j
+
+inoremap <leader><leader> <ESC>
+vnoremap <leader><leader> <ESC>

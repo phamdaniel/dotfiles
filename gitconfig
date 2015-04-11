@@ -18,28 +18,87 @@
     old = red
     new = green
 [alias]
-    co = "!f() { git checkout $@ && git fetch --all &> /dev/null; }; f"
-    cm = commit -m
-    cam = commit -am
-    ra = remote add
+    # Git checkout with background fetch (git remote coloring)
+    co = "!r() { git checkout $@ && git fetch --all --prune &> /dev/null; }; r"
+
+    # Add all files
     aa = add -A
-    fa = fetch --all
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
-    rs = "!r() { git reset --soft HEAD~$1; }; r"
-    rh = "!r() { git reset --hard HEAD~$1; }; r"
-    s = status -sb
-    p = !"git pull; git submodule foreach git pull origin master"
-    d = !"git --no-pager diff --minimal --patch-with-stat"
-    h = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --patch-with-stat --oneline; }; r"
-    hf = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --oneline --name-only; }; r"
+
+    # Commit with message
+    cm = commit -m
+
+    # Add all changes and commit with message
+    cam = !git add -A && git commit -m
+
+    # Amend the currently staged files to the latest commit
+    amend = commit --amend --reuse-message=HEAD
+
+    # Clone with submodules
+    c = clone --recursive
+
+    # Add remotes
+    ra = remote add
+
+    # Fetch and remove stale remote-tracking branches
+    fa = fetch --all --prune
+
+    # Working status in short format
+    s = status -s
+
+    # Graph of last 20 commits in short format
     l = !"git --no-pager log --oneline -n 20 --graph"
+
+    # Show blame
+    b = blame --date relative
+
+    # Show diff
+    d = !"git --no-pager diff --minimal --patch-with-stat"
+
+    # Show diff for cached files
+    dc = !"git --no-pager diff --cached --minimal --patch-with-stat"
+
+    # `git rs $number` reset soft to the state before `$number` revisions ago
+    rs = "!r() { git reset --soft HEAD~$1 && git reset; }; r"
+
+    # `git rh $number` reset hard to the state before `$number` revisions ago
+    rh = "!r() { git reset --hard HEAD~$1; }; r"
+
+    # `git reb $number` rebase interactive using the previous `$number` commits
+    reb = "!r() {  git rebase -i HEAD~$1; }; r"
+
+    # `git h` show diff for the previous commit
+    # `git h $number` show diff for the commit `$number + 1` revisions ago
+    h = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --patch-with-stat --oneline; }; r"
+
+    # `git hf` show files changed in the previous commit
+    # `git hf $number` show files changed in the commit `$number + 1` revisions ago
+    hf = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --oneline --name-only; }; r"
+
+    # Delete merged branches on remote and locally except master
+    dm = "!r() { git checkout master && git branch --merged | grep -v "master" | xargs -n 1 -I % sh -c 'git branch -d %; git push --delete origin %;'; }; r"
+
+    # Delete all local branches
+    dab = !git checkout master && git branch | grep -v "master" | xargs git branch -D
+
+    # Pull in changes in current repo and all submodules
+    p = !git pull && git submodule foreach git pull origin master
+
+    # Pull all the branches from origin
+    pb = "!r() { for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote &> /dev/null; done; git fetch --all &> /dev/null; git pull --all; }; r"
 [apply]
     whitespace = fix
 [core]
     whitespace = trailing-space,space-before-tab
     editor = vim
+
+    # Global .gitignore
+	excludesfile = ~/.gitignore
+
+    # Make `git rebase` safer on OS X
+    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+    trustctime = false
 [help]
-    autocorrect = 15
+    autocorrect = 5
 [push]
     default = simple
 [diff]
