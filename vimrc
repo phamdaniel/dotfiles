@@ -8,34 +8,7 @@ set background=dark
 colorscheme solarized
 set t_Co=256
 
-" SPACE AND TABS
-set tabstop=4                   "number of visual spaces per TAB
-set softtabstop=4               "number of spaces in tab while editing
-set shiftwidth=4                "reindent width
-set expandtab                   "TAB are now spaces
-set backspace=indent,eol,start  "Backspace through everything while in insert
-
-" UI CONFIG
-set showcmd             "display command in bottom bar
-set cursorline          "hilight current line
-set showmatch           "hilight matching [{()}]
-set ruler               "displays limited minimal line numbering
-set number              "displays line number
-set visualbell          "disables the bell
-set laststatus=2        "displays status bar
-set lazyredraw          "redraws only when needed
-set guioptions-=m       "hides the menu bar
-set guioptions-=T       "hides the toolbar
-set guioptions-=r       "hides the scrollbars
-
-" SEARCH
-set incsearch           "search as character are entered
-set hlsearch            "highlight matches
-set ignorecase          "case insensitive search
-set smartcase
-
 " GENERAL SETTINGS
-let mapleader=","
 set nocompatible
 set title
 set scrolloff=10
@@ -51,7 +24,37 @@ if exists("&undodir")
     set undoreload=50
 endif
 
+" SPACE AND TABS
+set tabstop=4                   "number of visual spaces per TAB
+set softtabstop=4               "number of spaces in tab while editing
+set shiftwidth=4                "reindent width
+set expandtab                   "TAB are now spaces
+set backspace=indent,eol,start  "Backspace through everything while in insert
+
+" SEARCH
+set incsearch           "search as character are entered
+set hlsearch            "highlight matches
+set ignorecase          "case insensitive search
+set smartcase
+
+" UI CONFIG
+set showcmd             "display command in bottom bar
+set cursorline          "hilight current line
+set showmatch           "hilight matching [{()}]
+set ruler               "displays limited minimal line numbering
+set number              "displays line number
+set visualbell          "disables the bell
+set laststatus=2        "displays status bar
+set lazyredraw          "redraws only when needed
+set guioptions-=m       "hides the menu bar
+set guioptions-=T       "hides the toolbar
+set guioptions-=r       "hides the scrollbars
+let g:airline_theme='luna'
+let g:airline_powerline_fonts = 1
+
 " MAPPINGS
+let g:user_emmet_leader_key='<C-Z>'"
+
 noremap <leader>ss :StripWhitespace<CR>
 noremap <leader>= ggvG=
 

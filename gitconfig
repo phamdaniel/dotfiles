@@ -117,3 +117,7 @@
     clean = "expand -t 4"
 [filter "tabspace2"]
     clean = "expand -t 2"
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
