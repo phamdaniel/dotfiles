@@ -1,6 +1,2 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/daniwa/.atom'
-let g:netrw_dirhist_2='/Users/daniwa/.vim'
-let g:netrw_dirhist_3='/Users/daniwa/.atom'
-let g:netrw_dirhist_4='/Users/daniwa/repos/github-notifier-chrome/extension/chrome-bootstrap'
+let g:netrw_dirhistmax  =0
+let g:netrw_dirhist_cnt =0

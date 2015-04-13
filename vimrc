@@ -13,6 +13,7 @@ set nocompatible
 set title
 set scrolloff=10
 set encoding=utf-8 nobomb
+set listchars=tab:>-
 set wildmenu
 set wildmode=list:longest,full
 set backupdir=~/.vim/backups
@@ -49,17 +50,46 @@ set lazyredraw          "redraws only when needed
 set guioptions-=m       "hides the menu bar
 set guioptions-=T       "hides the toolbar
 set guioptions-=r       "hides the scrollbars
+
+" STATUS LINE CONFIG
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" FILE EXPLORER CONFIG
+let g:netrw_banner = 0
+let s:netrw_up = maparg('-', 'n')
+let g:netrw_list_hide = netrw_gitignore#Hide() . ',^\.\.\=/\=$'
+let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'escape(v:val, ".*$~")'), '\|') . '\)[*@]\=$'')'
+
+" CTRLP CONFIG
+let g:ctrlp_working_path_mode = 'c'
+
+" GOLANG SYNTAX HIGHTLIGHTING
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 " MAPPINGS
-let g:user_emmet_leader_key='<C-Z>'"
+let mapleader = ','
+let g:user_emmet_leader_key = '<C-Z>'"
 
 noremap <leader>ss :StripWhitespace<CR>
 noremap <leader>= ggvG=
-
 noremap <leader>- o<esc>k
 noremap <leader>_ O<esc>j
+
+noremap [t :bp<CR>
+noremap ]t :bn<CR>
+noremap <leader>t :enew<CR>
+noremap <leader>q :bd<CR>
+noremap <leader><CR> :!<Space>
+noremap <leader><Tab> <C-W>w
+noremap <leader>/ :Ack<Space>
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>

@@ -27,8 +27,8 @@
     # Commit with message
     cm = commit -m
 
-    # Add all changes and commit with message
-    cam = !git add -A && git commit -m
+    # Add all changes and commit
+    ca = !git add -A && git commit -av
 
     # Amend the currently staged files to the latest commit
     amend = commit --amend --reuse-message=HEAD
@@ -121,3 +121,5 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[github]
+	user = phamdaniel
