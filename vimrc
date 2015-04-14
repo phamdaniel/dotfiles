@@ -13,7 +13,7 @@ set nocompatible
 set title
 set scrolloff=10
 set encoding=utf-8 nobomb
-set listchars=tab:>-
+set listchars=tab:▸\ ,eol:¬
 set wildmenu
 set wildmode=list:longest,full
 set backupdir=~/.vim/backups
@@ -79,7 +79,12 @@ let mapleader = ','
 let g:user_emmet_leader_key = '<C-Z>'"
 
 noremap <leader>ss :StripWhitespace<CR>
-noremap <leader>= ggvG=
+function! Reindent()
+    let save_cursor = getpos(".")
+    :normal gg=G'.
+    call setpos('.', save_cursor)
+endfunction
+noremap <leader>= :call Reindent()<CR>
 noremap <leader>- o<esc>k
 noremap <leader>_ O<esc>j
 
