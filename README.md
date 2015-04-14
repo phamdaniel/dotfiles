@@ -1,5 +1,5 @@
-Configuration Files
-===================
+# Configuration Files
 
-My personal config files.
+Git prompt coloring inside Bash:
 
+![Screenshot of the prompt coloring](http://i.imgur.com/YFOtB35.png)
