@@ -13,6 +13,7 @@ export LESSOPEN='|~/.lessfilter %s'
 export GOPATH=$HOME/go_code
 export HISTCONTROL=erasedups
 export HISTIGNORE="clear*:history*:ll*:la*:ls*"
+export LS_COLORS='di=34;34:ln=34;35:ex=34;31:'
 
 #PATH additions
 PATH="/usr/local/bin:$HOME/bin:$PATH"

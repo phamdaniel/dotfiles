@@ -12,9 +12,11 @@ set t_Co=256
 set nocompatible                "disable vi compatible mode
 set title                       "include filename in title bar
 set autoread                    "reload the file if it was changed elsewhere
+set hid                         "change buffer without saving
 set scrolloff=10                "scroll 10 lines before the window border
 set encoding=utf-8 nobomb       "use UTF-8 without BOM
-set listchars=tab:▸\ ,eol:¬     "define invisible charcters
+set listchars=tab:▸\ ,eol:¬     "define invisible characters
+set list                        "show invisible characters"
 set foldmethod=syntax           "allow folding
 set foldnestmax=3               "max folding depth
 set nofoldenable                "don't fold by default
@@ -55,7 +57,7 @@ set nohlsearch          "disable seach hilighting"
 set guioptions-=m       "hides the menu bar
 set guioptions-=T       "hides the toolbar
 set guioptions-=r       "hides the scrollbars
-set wildmenu
+set wildmenu            "enable command autocompletion"
 set wildmode=list:longest,full
 set wildignore=*.pyc,*.exe,*.dll,*.o
 

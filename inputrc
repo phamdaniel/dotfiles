@@ -1,22 +1,31 @@
 # Enable vi mode
 set editing-mode vi
+
 # Keep the emacs shortcut to clear screen
 set keymap vi-insert
 "\C-l": clear-screen
 
 # Autocomplete regarless of filename case
 set completion-ignore-case on
+
 # Immediatly show completion options
 set show-all-if-ambiguous on
+
 # Complete to the longest matching prefix
 set menu-complete-display-prefix on
+
 # First completion call only list the options
 set completion-prefix-display-length 0
+
 # Smarter completion if cursor is not at the end
 set skip-completed-text on
 
+# Display copletions with color
+set colored-stats on
+
 # Add trailing slash to symlink directories
 set mark-symlinked-directories on
+
 # Allow UTF-8 input and output
 set output-meta on
 set input-meta on

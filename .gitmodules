@@ -30,9 +30,6 @@
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim.git
-[submodule "vim/bundle/vim-pasta"]
-	path = vim/bundle/vim-pasta
-	url = https://github.com/sickill/vim-pasta
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
@@ -51,3 +48,6 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/vim-instant-markdown"]
+	path = vim/bundle/vim-instant-markdown
+	url = https://github.com/suan/vim-instant-markdown.git
