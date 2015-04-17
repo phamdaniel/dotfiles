@@ -11,6 +11,8 @@ done;
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 export GOPATH=$HOME/go_code
+export HISTCONTROL=erasedups
+export HISTIGNORE="clear*:history*:ll*:la*:ls*"
 
 #PATH additions
 PATH="/usr/local/bin:$HOME/bin:$PATH"
