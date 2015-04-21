@@ -78,7 +78,7 @@ prompt_git() {
     fi;
 }
 
-PS1="\[$VIOLET\]\u\[$WHITE\[ at \[$RED\]\h \[$WHITE\]> "
+PS1="\[$VIOLET\]\u\[$WHITE\] at \[$RED\]\h \[$WHITE\]> "
 PS1+="\[$YELLOW\][\w]"
 PS1+="\$(remote_git_color)\$(prompt_git)"
 PS1+="\[$WHITE\]\n$ \[$RESET\]"

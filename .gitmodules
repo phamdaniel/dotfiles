@@ -51,3 +51,6 @@
 [submodule "vim/bundle/vim-instant-markdown"]
 	path = vim/bundle/vim-instant-markdown
 	url = https://github.com/suan/vim-instant-markdown.git
+[submodule "vim/bundle/netrw"]
+	path = vim/bundle/netrw
+	url = https://github.com/eiginn/netrw
