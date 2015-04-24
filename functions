@@ -1,10 +1,13 @@
-function cdAndFetch () {
-    cd "$@" && (git fetch --all &> /dev/null &)
-}
-alias cd="cdAndFetch"
-
 function mkd() {
     mkdir -p "$@" && cd "$_";
+}
+
+function h() {
+     if [ -z "$*" ]; then
+         history;
+     else
+         history | egrep "$@";
+     fi;
 }
 
 function fs() {

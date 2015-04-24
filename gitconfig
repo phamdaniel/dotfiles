@@ -18,8 +18,8 @@
     old = red
     new = green
 [alias]
-    # Git checkout with background fetch (git remote coloring)
-    co = "!r() { git checkout $@ && git fetch --all --prune &> /dev/null; }; r"
+    # Git checkout
+    co = checkout
 
     # Add all files
     aa = add -A

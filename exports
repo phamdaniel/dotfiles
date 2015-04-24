@@ -1,0 +1,7 @@
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+export GOPATH=$HOME/go_code
+export HISTCONTROL=erasedups
+export HISTIGNORE="clear*:history*:ll*:la*:ls*"
+export LS_COLORS="di=31;34:ln=31;35:ex=31;31:"
+export LSCOLORS="exfxcxdxbxegedabagacad"
