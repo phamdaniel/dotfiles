@@ -92,7 +92,7 @@
     editor = vim
 
     # Global .gitignore
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
@@ -118,8 +118,6 @@
 [filter "tabspace2"]
     clean = "expand -t 2"
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
-[github]
-	user = phamdaniel
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true
