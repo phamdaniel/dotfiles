@@ -88,6 +88,7 @@ endfunction
 
 " FILE EXPLORER CONFIG
 let g:netrw_banner = 0
+let g:netrw_liststyle=3
 let s:netrw_up = maparg('-', 'n')
 let g:netrw_list_hide = netrw_gitignore#Hide() . ',^\.\.\=/\=$'
 let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'escape(v:val, ".*$~")'), '\|') . '\)[*@]\=$'')'
@@ -136,6 +137,7 @@ noremap ]t :bn<CR>
 noremap <leader>t :enew<CR>
 noremap <leader>q :bd<CR>
 noremap <leader><Tab> <C-W>w
+noremap <leader>e :e .<CR>
 noremap <leader>/ :Ack<Space>
 
 inoremap <leader><leader> <ESC>

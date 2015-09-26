@@ -25,3 +25,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# IDE Generated files #
+#######################
+*.iml
+.idea/
+.metadata/
+
+xcuserdata
+*.xccheckout
+
