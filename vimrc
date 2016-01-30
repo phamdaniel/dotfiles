@@ -15,8 +15,8 @@ set autoread                    "reload the file if it was changed elsewhere
 set hid                         "change buffer without saving
 set scrolloff=10                "scroll 10 lines before the window border
 set encoding=utf-8 nobomb       "use UTF-8 without BOM
-set listchars=tab:▸\ ,eol:¬     "define invisible characters
-set list                        "show invisible characters"
+set listchars=tab:.\ ,eol:¬     "define invisible characters
+set list                        "show invisible characters
 set foldmethod=syntax           "allow folding
 set foldnestmax=3               "max folding depth
 set nofoldenable                "don't fold by default
@@ -34,7 +34,6 @@ set tabstop=4           "number of visual spaces per TAB
 set softtabstop=4       "number of spaces in tab while editing
 set shiftwidth=4        "reindent width
 set shiftround          "indent to correct columns
-set expandtab           "TAB are now spaces
 set backspace=2         "Backspace through everything while in insert
 set preserveindent      "follow the convention laid before us
 
@@ -53,19 +52,18 @@ set number              "displays line number
 set visualbell          "disables the bell
 set laststatus=2        "displays status bar
 set lazyredraw          "redraws only when needed
-set nohlsearch          "disable seach hilighting"
+set nohlsearch          "disable seach hilighting
 set guioptions-=m       "hides the menu bar
 set guioptions-=T       "hides the toolbar
 set guioptions-=r       "hides the scrollbars
-set wildmenu            "enable command autocompletion"
+set wildmenu            "enable command autocompletion
 set wildmode=list:longest,full
 set wildignore=*.pyc,*.exe,*.dll,*.o
 
 " STATUS LINE CONFIG
-let g:airline_theme='luna'
+let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " SYNTASTIC

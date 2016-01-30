@@ -39,6 +39,9 @@
     # Add remotes
     ra = remote add
 
+	# List remotes
+	remotes = remote -v
+
     # Fetch and remove stale remote-tracking branches
     fa = fetch --all --prune
 
@@ -100,7 +103,7 @@
 [help]
     autocorrect = 5
 [push]
-    default = simple
+    default = current
 [diff]
     renames = copies
 [difftool]

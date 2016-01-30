@@ -11,3 +11,5 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 setopt HIST_IGNORE_ALL_DUPS
 HISTSIZE=400
 SAVEHIST=400
+
+eval "$(thefuck --alias)"
