@@ -20,13 +20,14 @@ set list                        "show invisible characters
 set foldmethod=syntax           "allow folding
 set foldnestmax=3               "max folding depth
 set nofoldenable                "don't fold by default
+set tags=tags;                  "tell vim to go up parent to find ctags
 set backupdir=~/.vim/backups    "set backup folder
 set directory=~/.vim/swaps      "set swap folder
 set undolevels=100              "set number of undos maintained
 if exists("&undodir")           "persist undos through multiple sessions
     set undodir=~/.vim/undo
     set undofile
-    set undoreload=50
+    set undoreload=100
 endif
 
 " SPACE AND TABS
@@ -64,6 +65,7 @@ set wildignore=*.pyc,*.exe,*.dll,*.o
 let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " SYNTASTIC
@@ -132,11 +134,16 @@ noremap <leader>_ O<esc>j
 
 noremap [t :bp<CR>
 noremap ]t :bn<CR>
+noremap [w <C-W>h
+noremap ]w <C-W>l
 noremap <leader>t :enew<CR>
 noremap <leader>q :bd<CR>
 noremap <leader><Tab> <C-W>w
 noremap <leader>e :e .<CR>
 noremap <leader>/ :Ack<Space>
+noremap <leader>d <C-]>
+noremap <leader>D <C-T>
+nnoremap <leader>. :CtrlPTag<cr>
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>

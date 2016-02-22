@@ -9,3 +9,6 @@ source $HOME/bin/hk-bash-completion.sh
 for file in ~/.{aliases,bash_prompt,exports,functions,path}; do
     source "$file";
 done;
+
+# Added by Dato Launcher v2.0.2
+export PATH="/Users/daniwa/anaconda/bin:$PATH"

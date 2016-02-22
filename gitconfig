@@ -57,8 +57,14 @@
     # Show diff
     d = !"git --no-pager diff --minimal --patch-with-stat"
 
+    # Show diff stats
+    ds = !"git --no-pager diff --stat"
+
     # Show diff for cached files
     dc = !"git --no-pager diff --cached --minimal --patch-with-stat"
+
+    # Show diff stats for cached files
+    dcs = !"git --no-pager diff --cached --stat"
 
     # `git rs $number` reset soft to the state before `$number` revisions ago
     rs = "!r() { git reset --soft HEAD~$1 && git reset; }; r"
