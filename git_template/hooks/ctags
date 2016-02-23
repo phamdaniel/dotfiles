@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+dir="`git rev-parse --show-toplevel`"
+rm -f "$dir/tags"
+git ls-files | ctags -L - -f "$dir/tags"

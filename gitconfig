@@ -94,6 +94,9 @@
 
     # Pull all the branches from origin
     pb = "!r() { for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote &> /dev/null; done; git fetch --all &> /dev/null; git pull --all; }; r"
+
+    # Shortcut to reindex ctags
+    ctags="!.git/hooks/ctags"
 [apply]
     whitespace = fix
 [core]
@@ -130,3 +133,5 @@
     clean = git lfs clean %f
     smudge = git lfs smudge %f
     required = true
+[init]
+	templatedir = ~/.git_template
