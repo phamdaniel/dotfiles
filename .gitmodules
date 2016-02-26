@@ -54,3 +54,6 @@
 [submodule "vim/bundle/vim-autotag"]
 	path = vim/bundle/vim-autotag
 	url = https://github.com/craigemery/vim-autotag.git
+[submodule "pure"]
+	path = pure
+	url = https://github.com/phamdaniel/pure.git

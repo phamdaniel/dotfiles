@@ -15,3 +15,6 @@ for v in bin; do
         echo ln: ~/$v: File exists.
     fi
 done
+
+ln -s $(pwd)/pure/async.zsh ~/.async
+ln -s $(pwd)/pure/pure.zsh ~/.zsh_prompt

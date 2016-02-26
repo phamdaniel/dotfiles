@@ -39,8 +39,8 @@
     # Add remotes
     ra = remote add
 
-	# List remotes
-	remotes = remote -v
+    # List remotes
+    remotes = remote -v
 
     # Fetch and remove stale remote-tracking branches
     fa = fetch --all --prune
@@ -92,9 +92,6 @@
     # Pull in changes in current repo and all submodules
     p = !git pull && git submodule foreach git pull origin master
 
-    # Pull all the branches from origin
-    pb = "!r() { for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote &> /dev/null; done; git fetch --all &> /dev/null; git pull --all; }; r"
-
     # Shortcut to reindex ctags
     ctags="!.git/hooks/ctags"
 [apply]
@@ -109,6 +106,8 @@
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
     trustctime = false
+[init]
+    templatedir = ~/.git_template
 [help]
     autocorrect = 5
 [push]
@@ -133,5 +132,3 @@
     clean = git lfs clean %f
     smudge = git lfs smudge %f
     required = true
-[init]
-	templatedir = ~/.git_template
