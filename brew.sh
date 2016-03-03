@@ -39,6 +39,7 @@ brew install python
 brew cask install caprine
 brew cask install adobe-reader
 brew cask install google-chrome
+brew cask install google-drive
 brew cask install spectacle
 brew cask install flux
 brew cask install xee
