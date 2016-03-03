@@ -12,3 +12,9 @@ alias reload="exec $SHELL -l"
 alias pcat="pygmentize -g"
 alias dunnet="emacs -batch -l dunnet"
 alias pyserver="python -m SimpleHTTPServer"
+
+# Enable alias to be sudo'ed
+alias sudo='sudo '
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"

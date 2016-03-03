@@ -1,3 +1,6 @@
+# Make vim the default editor.
+export EDITOR='vim';
+
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 export GOPATH=$HOME/go_code

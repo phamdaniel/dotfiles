@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for h in {ackrc,aliases,bash_profile,bash_prompt,bashrc,ctags,functions,gitconfig,gitignore,git_template,inputrc,lessfilter,tmux.conf,vim,vimrc,zshrc}; do
+for h in {ackrc,aliases,bash_profile,bash_prompt,bashrc,ctags,exports,functions,gitconfig,gitignore,git_template,inputrc,lessfilter,tmux.conf,vim,vimrc,zshrc}; do
     if [ ! -d ~/.$h ]; then
         ln -s $(pwd)/$h ~/.$h
     else
