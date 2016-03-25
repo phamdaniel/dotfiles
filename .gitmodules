@@ -57,3 +57,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/phamdaniel/pure.git
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes

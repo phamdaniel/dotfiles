@@ -29,17 +29,23 @@ brew install cask
 brew install ctags
 brew install git
 brew install git-lfs
-brew install thefuck
 
 # Useful languages
 brew install lua
 brew install python
+brew install java
 
 # Useful applications
-brew cask install caprine
-brew cask install adobe-reader
 brew cask install google-chrome
 brew cask install google-drive
 brew cask install spectacle
 brew cask install flux
 brew cask install xee
+brew cask install caprine
+brew cask install slack
+brew cask install adobe-reader
+brew cask install evernote
+brew cask install transmission
+brew cask install atom
+brew cask install vlc
+brew cask insatll paintbrush

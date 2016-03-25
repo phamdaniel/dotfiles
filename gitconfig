@@ -39,6 +39,9 @@
     # Add remotes
     ra = remote add
 
+    # List braches in reverse chronological order
+    branches = !"git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+
     # List remotes
     remotes = remote -v
 

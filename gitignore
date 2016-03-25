@@ -25,6 +25,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+Desktop.ini
 
 # IDE Generated files #
 #######################
@@ -37,3 +38,8 @@ xcuserdata
 
 tags
 !tags/
+
+# NPM #
+#######
+npm-debug.log
+node_modules

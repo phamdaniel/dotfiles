@@ -25,9 +25,9 @@ set backupdir=~/.vim/backups    "set backup folder
 set directory=~/.vim/swaps      "set swap folder
 set undolevels=100              "set number of undos maintained
 if exists("&undodir")           "persist undos through multiple sessions
-    set undodir=~/.vim/undo
-    set undofile
-    set undoreload=100
+	set undodir=~/.vim/undo
+	set undofile
+	set undoreload=100
 endif
 
 " SPACE AND TABS
@@ -60,9 +60,13 @@ set guioptions-=r       "hides the scrollbars
 set wildmenu            "enable command autocompletion
 set wildmode=list:longest,full
 set wildignore=*.pyc,*.exe,*.dll,*.o
+if exists("&relativenumber")
+	set relativenumber
+	au BufReadPost * set relativenumber
+endif
 
 " STATUS LINE CONFIG
-let g:airline_theme='dark'
+let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -79,11 +83,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_quiet_messages = { "type": "style"  }
 function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        Errors
-    endif
+	let old_last_winnr = winnr('$')
+	lclose
+	if old_last_winnr == winnr('$')
+		Errors
+	endif
 endfunction
 
 " FILE EXPLORER CONFIG
@@ -95,6 +99,7 @@ let g:netrw_sort_sequence = '[\/]$,*,\%(' . join(map(split(&suffixes, ','), 'esc
 
 " CTRLP CONFIG
 let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " SUPERTAB CONFIG
 let g:SuperTabDefaultCompletionType = "context"
@@ -124,9 +129,9 @@ noremap <leader>h :setlocal hlsearch!<CR>
 
 noremap <leader>ss :StripWhitespace<CR>
 function! Reindent()
-    let save_cursor = getpos(".")
-    :normal gg=G'.
-    call setpos('.', save_cursor)
+	let save_cursor = getpos(".")
+	:normal gg=G'.
+	call setpos('.', save_cursor)
 endfunction
 noremap <leader>= :call Reindent()<CR>
 noremap <leader>- o<esc>k
@@ -134,8 +139,6 @@ noremap <leader>_ O<esc>j
 
 noremap [t :bp<CR>
 noremap ]t :bn<CR>
-noremap [w <C-W>h
-noremap ]w <C-W>l
 noremap <leader>t :enew<CR>
 noremap <leader>q :bd<CR>
 noremap <leader><Tab> <C-W>w
@@ -147,3 +150,9 @@ nnoremap <leader>. :CtrlPTag<cr>
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>
+
+" window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
