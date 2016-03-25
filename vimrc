@@ -29,6 +29,7 @@ if exists("&undodir")           "persist undos through multiple sessions
 	set undofile
 	set undoreload=100
 endif
+set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 " SPACE AND TABS
 set tabstop=4           "number of visual spaces per TAB
@@ -116,6 +117,23 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" STARTIFY CONFIGS
+let g:ctrlp_reuse_window = 'startify'
+let g:startify_custom_header = []
+let g:startify_enable_special = 0
+let g:startify_files_number = 8
+let g:startify_list_order = [
+	\ ['	MRU:'],
+	\ 'files',
+	\ ['	MRU within this dir:'],
+	\ 'dir',
+	\ ['	Sessions:'],
+	\ 'sessions',
+	\ ['	 Bookmarks:'],
+	\ 'bookmarks',
+	\ ]
+let g:startify_skiplist =  ['COMMIT_EDITMSG' ]
 
 " MAPPINGS
 let mapleader = ','
