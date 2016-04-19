@@ -29,6 +29,8 @@ brew install cask
 brew install ctags
 brew install git
 brew install git-lfs
+brew install tmux
+brew install unrar
 
 # Useful languages
 brew install lua

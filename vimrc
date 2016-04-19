@@ -2,6 +2,10 @@
 execute pathogen#infect()
 filetype plugin indent on
 
+" -------
+" OPTIONS
+" -------
+
 " COLORS
 syntax enable
 set background=dark
@@ -20,14 +24,16 @@ set list                        "show invisible characters
 set foldmethod=syntax           "allow folding
 set foldnestmax=3               "max folding depth
 set nofoldenable                "don't fold by default
+set mouse=nvi                   "enable mouse scrolling
+set ttimeoutlen=50              "make Esc work faster
 set tags=tags;                  "tell vim to go up parent to find ctags
 set backupdir=~/.vim/backups    "set backup folder
 set directory=~/.vim/swaps      "set swap folder
-set undolevels=100              "set number of undos maintained
+set undolevels=500              "set number of undos maintained
 if exists("&undodir")           "persist undos through multiple sessions
 	set undodir=~/.vim/undo
 	set undofile
-	set undoreload=100
+	set undoreload=500
 endif
 set viminfo='100,n$HOME/.vim/files/info/viminfo
 
@@ -66,6 +72,10 @@ if exists("&relativenumber")
 	au BufReadPost * set relativenumber
 endif
 
+" -------
+" PLUGINS
+" -------
+
 " STATUS LINE CONFIG
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
@@ -82,7 +92,7 @@ let g:syntastic_loc_list_height=6
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages = { "type": "style"  }
+let g:syntastic_quiet_messages = { 'type': 'style', 'level': 'warnings' }
 function! ToggleErrors()
 	let old_last_winnr = winnr('$')
 	lclose
@@ -108,9 +118,6 @@ let g:SuperTabDefaultCompletionType = "context"
 " RAINBOW COFIGS
 let g:rainbow_active = 1
 
-" GIT COMMIT CONFIGS
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
 " GOLANG SYNTAX HIGHTLIGHTING
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -124,25 +131,25 @@ let g:startify_custom_header = []
 let g:startify_enable_special = 0
 let g:startify_files_number = 8
 let g:startify_list_order = [
-	\ ['	MRU:'],
-	\ 'files',
-	\ ['	MRU within this dir:'],
-	\ 'dir',
-	\ ['	Sessions:'],
-	\ 'sessions',
-	\ ['	 Bookmarks:'],
-	\ 'bookmarks',
+	\ ['MRU within this dir:'],'dir',
+	\ ['MRU:'], 'files',
+	\ ['Sessions:'], 'sessions',
+	\ ['Bookmarks:'], 'bookmarks'
 	\ ]
-let g:startify_skiplist =  ['COMMIT_EDITMSG' ]
+let g:startify_skiplist =  ['COMMIT_EDITMSG']
 
+" --------
 " MAPPINGS
+" --------
+
 let mapleader = ','
 
 nmap j gj
 nmap k gk
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 noremap \p :setlocal paste!<cr>
-noremap \q :call ToggleErrors()<CR>
+noremap \q :call SyntasticToggleMode()<CR>
+noremap \Q :call ToggleErrors()<CR>
 noremap <leader>h :setlocal hlsearch!<CR>
 
 noremap <leader>ss :StripWhitespace<CR>
@@ -159,17 +166,19 @@ noremap [t :bp<CR>
 noremap ]t :bn<CR>
 noremap <leader>t :enew<CR>
 noremap <leader>q :bd<CR>
-noremap <leader><Tab> <C-W>w
 noremap <leader>e :e .<CR>
 noremap <leader>/ :Ack<Space>
 noremap <leader>d <C-]>
 noremap <leader>D <C-T>
 nnoremap <leader>. :CtrlPTag<cr>
+noremap <leader>y "+y
+noremap <leader>p "+p
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>
 
 " window movement
+noremap <leader><Tab> <C-W>w
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h

@@ -1,137 +1,143 @@
 [user]
-    name = Daniel Pham
-    email = pham.dany@gmail.com
+	name = Daniel Pham
+	email = pham.dany@gmail.com
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
 [color]
-    ui = true
-    diff = auto
-    branch = auto
-    status = auto
+	ui = true
+	diff = auto
+	branch = auto
+	status = auto
 [color "status"]
-    changed = blue
-    untracked = magenta
-    added = green
+	changed = blue
+	untracked = magenta
+	added = green
 [color "diff"]
-    meta = yellow
-    frag = blue
-    old = red
-    new = green
+	meta = yellow
+	frag = blue
+	old = red
+	new = green
 [alias]
-    # Git checkout
-    co = checkout
+	# Git checkout
+	co = checkout
 
-    # Add all files
-    aa = add -A
+	# Add all files
+	aa = add -A
 
-    # Commit with message
-    cm = commit -m
+	# Commit with message
+	cm = commit -m
 
-    # Add all changes and commit
-    ca = !git add -A && git commit -av
+	# Add all changes and commit
+	ca = !git add -A && git commit -av
 
-    # Amend the currently staged files to the latest commit
-    amend = commit --amend --reuse-message=HEAD
+	# Amend the currently staged files to the latest commit
+	amend = commit --amend --reuse-message=HEAD
 
-    # Clone with submodules
-    c = clone --recursive
+	# Clone with submodules
+	c = clone --recursive
 
-    # Add remotes
-    ra = remote add
+	# Add remotes
+	ra = remote add
 
-    # List braches in reverse chronological order
-    branches = !"git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+	# List braches in reverse chronological order
+	branches = !"git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 
-    # List remotes
-    remotes = remote -v
+	# List remotes
+	remotes = remote -v
 
-    # Fetch and remove stale remote-tracking branches
-    fa = fetch --all --prune
+	# Fetch and remove stale remote-tracking branches
+	fa = fetch --all --prune
 
-    # Working status in short format
-    s = status -s
+	# Working status in short format
+	s = status -s
 
-    # Graph of last 20 commits in short format
-    l = !"git --no-pager log --oneline -n 20 --graph"
+	# Graph of last 20 commits in short format
+	l = !"git --no-pager log --oneline -n 20 --graph"
 
-    # Show blame
-    b = blame --date relative
+	# Show blame
+	b = blame --date relative
 
-    # Show diff
-    d = !"git --no-pager diff --minimal --patch-with-stat"
+	# Show diff
+	d = !"git --no-pager diff --minimal --patch-with-stat"
 
-    # Show diff stats
-    ds = !"git --no-pager diff --stat"
+	# Show diff stats
+	ds = !"git --no-pager diff --stat"
 
-    # Show diff for cached files
-    dc = !"git --no-pager diff --cached --minimal --patch-with-stat"
+	# Show diff for cached files
+	dc = !"git --no-pager diff --cached --minimal --patch-with-stat"
 
-    # Show diff stats for cached files
-    dcs = !"git --no-pager diff --cached --stat"
+	# Show diff stats for cached files
+	dcs = !"git --no-pager diff --cached --stat"
 
-    # `git rs $number` reset soft to the state before `$number` revisions ago
-    rs = "!r() { git reset --soft HEAD~$1 && git reset; }; r"
+	# `git rs $number` reset soft to the state before `$number` revisions ago
+	rs = "!r() { git reset --soft HEAD~$1 && git reset; }; r"
 
-    # `git rh $number` reset hard to the state before `$number` revisions ago
-    rh = "!r() { git reset --hard HEAD~$1; }; r"
+	# `git rh $number` reset hard to the state before `$number` revisions ago
+	rh = "!r() { git reset --hard HEAD~$1; }; r"
 
-    # `git reb $number` rebase interactive using the previous `$number` commits
-    reb = "!r() {  git rebase -i HEAD~$1; }; r"
+	# `git reb $number` rebase interactive using the previous `$number` commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
 
-    # `git h` show diff for the previous commit
-    # `git h $number` show diff for the commit `$number + 1` revisions ago
-    h = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --patch-with-stat --oneline; }; r"
+	# `git h` show diff for the previous commit
+	# `git h $number` show diff for the commit `$number + 1` revisions ago
+	h = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --patch-with-stat --oneline; }; r"
 
-    # `git hf` show files changed in the previous commit
-    # `git hf $number` show files changed in the commit `$number + 1` revisions ago
-    hf = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --oneline --name-only; }; r"
+	# `git hf` show files changed in the previous commit
+	# `git hf $number` show files changed in the commit `$number + 1` revisions ago
+	hf = "!r() { arg=${1-0}; git --no-pager show HEAD~$arg --oneline --name-only; }; r"
 
-    # Delete merged branches on remote and locally except master
-    dm = "!r() { git checkout master && git branch --merged | grep -v "master" | xargs -n 1 -I % sh -c 'git branch -d %; git push --delete origin %;'; }; r"
+	# Delete merged branches on remote and locally except master
+	dm = "!r() { git checkout master && git branch --merged | grep -v "master" | xargs -n 1 -I % sh -c 'git branch -d %; git push --delete origin %;'; }; r"
 
-    # Delete all local branches
-    dab = !git checkout master && git branch | grep -v "master" | xargs git branch -D
+	# Delete all local branches
+	dab = !git checkout master && git branch | grep -v "master" | xargs git branch -D
 
-    # Pull in changes in current repo and all submodules
-    p = !git pull && git submodule foreach git pull origin master
+	# Pull in changes in current repo and all submodules
+	p = !git pull && git submodule update --init --recursive
 
-    # Shortcut to reindex ctags
-    ctags="!.git/hooks/ctags"
+	# Update all submodules
+	su = submodule update --init --recursive
+
+	# Upgrade all submodules
+	sp = submodule foreach git pull origin master
+
+	# Shortcut to reindex ctags
+	ctags="!.git/hooks/ctags"
 [apply]
-    whitespace = fix
+	whitespace = fix
 [core]
-    whitespace = trailing-space,space-before-tab
-    editor = vim
+	whitespace = trailing-space,space-before-tab
+	editor = vim
 
-    # Global .gitignore
-    excludesfile = ~/.gitignore
+	# Global .gitignore
+	excludesfile = ~/.gitignore
 
-    # Make `git rebase` safer on OS X
-    # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-    trustctime = false
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
 [init]
-    templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [help]
-    autocorrect = 5
+	autocorrect = 5
 [push]
-    default = current
+	default = current
 [diff]
-    renames = copies
+	renames = copies
 [difftool]
-    prompt = false
+	prompt = false
 [filter "media"]
-    required = true
-    clean = git media clean %f
-    smudge = git media smudge %f
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
 [filter "hawser"]
-    clean = git hawser clean %f
-    smudge = git hawser smudge %f
-    required = true
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
 [filter "tabspace4"]
-    clean = "expand -t 4"
+	clean = "expand -t 4"
 [filter "tabspace2"]
-    clean = "expand -t 2"
+	clean = "expand -t 2"
 [filter "lfs"]
-    clean = git lfs clean %f
-    smudge = git lfs smudge %f
-    required = true
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
