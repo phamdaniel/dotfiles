@@ -29,13 +29,16 @@ brew install cask
 brew install ctags
 brew install git
 brew install git-lfs
+brew install node
+brew install reattach-to-user-namespace
 brew install tmux
 brew install unrar
+brew install zsh-completions
 
 # Useful languages
 brew install lua
+brew install go
 brew install python
-brew install java
 
 # Useful applications
 brew cask install google-chrome
@@ -45,9 +48,8 @@ brew cask install flux
 brew cask install xee
 brew cask install caprine
 brew cask install slack
-brew cask install adobe-reader
 brew cask install evernote
 brew cask install transmission
 brew cask install atom
 brew cask install vlc
-brew cask insatll paintbrush
+brew cask install paintbrush
