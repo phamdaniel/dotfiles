@@ -1,6 +1,31 @@
-" PATHOGEN
-execute pathogen#infect()
-filetype plugin indent on
+" --------
+" VIM-PLUG
+" --------
+call plug#begin('~/.vim/plugged')
+Plug 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
+Plug 'craigemery/vim-autotag'
+
+Plug 'raimondi/delimitMate'
+Plug 'eiginn/netrw'
+Plug 'luochen1990/rainbow'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+
+Plug 'bling/vim-airline'
+Plug 'danhp/vim-airline-themes'
+Plug 'scrooloose/syntastic'
+Plug 'mhinz/vim-startify'
+
+Plug 'mattn/emmet-vim',                 {'for': 'html'}
+Plug 'fatih/vim-go',                    {'for': 'go'}
+Plug 'suan/vim-instant-markdown',       {'for': 'markdown'}
+call plug#end()
 
 " -------
 " OPTIONS
@@ -8,11 +33,17 @@ filetype plugin indent on
 
 " COLORS
 syntax enable
-set background=dark
+let themeColour=$THEMECOLOUR
+if themeColour == 'light'
+	set background=light
+else
+	set background=dark
+endif
 colorscheme solarized
 set t_Co=256
 
 " GENERAL SETTINGS
+filetype plugin indent on
 set nocompatible                "disable vi compatible mode
 set title                       "include filename in title bar
 set autoread                    "reload the file if it was changed elsewhere
@@ -42,7 +73,7 @@ set tabstop=4           "number of visual spaces per TAB
 set softtabstop=4       "number of spaces in tab while editing
 set shiftwidth=4        "reindent width
 set shiftround          "indent to correct columns
-set backspace=2         "Backspace through everything while in insert
+set backspace=2         "backspace through everything while in insert
 set preserveindent      "follow the convention laid before us
 
 " SEARCH
@@ -55,15 +86,15 @@ set smartcase           "case sensitive if query has mixed cases
 set showcmd             "display command in bottom bar
 set cursorline          "hilight current line
 set showmatch           "hilight matching [{()}]
-set ruler               "displays limited minimal line numbering
-set number              "displays line number
-set visualbell          "disables the bell
-set laststatus=2        "displays status bar
-set lazyredraw          "redraws only when needed
+set ruler               "display limited minimal line numbering
+set number              "display line number
+set visualbell          "disable the bell
+set laststatus=2        "display status bar
+set lazyredraw          "redraw only when needed
 set nohlsearch          "disable seach hilighting
-set guioptions-=m       "hides the menu bar
-set guioptions-=T       "hides the toolbar
-set guioptions-=r       "hides the scrollbars
+set guioptions-=m       "hide the menu bar
+set guioptions-=T       "hide the toolbar
+set guioptions-=r       "hide the scrollbars
 set wildmenu            "enable command autocompletion
 set wildmode=list:longest,full
 set wildignore=*.pyc,*.exe,*.dll,*.o
@@ -92,7 +123,7 @@ let g:syntastic_loc_list_height=6
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_quiet_messages = { 'type': 'style', 'level': 'warnings' }
+let g:syntastic_quiet_messages = {'type': 'style', 'level': 'warnings'}
 function! ToggleErrors()
 	let old_last_winnr = winnr('$')
 	lclose
