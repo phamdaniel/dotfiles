@@ -1,3 +1,5 @@
+#! usr/bin/bash
+
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
@@ -31,7 +33,7 @@ function calc() {
 	if [[ "$result" == *.*  ]]; then
 	# improve the output for decimal numbers
 		printf "$result" |
-			sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
+			sed -e 's/^\./0./'    `# add "0" for cases like ".5"` \
 			-e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
 			-e 's/0*$//;s/\.$//';  # remove trailing zeros
 	else

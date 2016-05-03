@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'bling/vim-airline'
 Plug 'danhp/vim-airline-themes'
@@ -36,8 +37,10 @@ syntax enable
 let themeColour=$THEMECOLOUR
 if themeColour == 'light'
 	set background=light
+	let g:airline_theme='solarized'
 else
 	set background=dark
+	let g:airline_theme='luna'
 endif
 colorscheme solarized
 set t_Co=256
@@ -108,7 +111,6 @@ endif
 " -------
 
 " STATUS LINE CONFIG
-let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -207,10 +209,3 @@ noremap <leader>p "+p
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>
-
-" window movement
-noremap <leader><Tab> <C-W>w
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
