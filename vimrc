@@ -8,7 +8,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ervandew/supertab'
 Plug 'craigemery/vim-autotag'
 
-Plug 'raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'eiginn/netrw'
 Plug 'luochen1990/rainbow'
 Plug 'ntpeters/vim-better-whitespace'
@@ -46,7 +46,6 @@ colorscheme solarized
 set t_Co=256
 
 " GENERAL SETTINGS
-filetype plugin indent on
 set nocompatible                "disable vi compatible mode
 set title                       "include filename in title bar
 set autoread                    "reload the file if it was changed elsewhere
@@ -71,6 +70,11 @@ if exists("&undodir")           "persist undos through multiple sessions
 endif
 set viminfo='100,n$HOME/.vim/files/info/viminfo
 
+" Restore cursor to position in previous session
+if has("autocmd")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 " SPACE AND TABS
 set tabstop=4           "number of visual spaces per TAB
 set softtabstop=4       "number of spaces in tab while editing
@@ -78,6 +82,13 @@ set shiftwidth=4        "reindent width
 set shiftround          "indent to correct columns
 set backspace=2         "backspace through everything while in insert
 set preserveindent      "follow the convention laid before us
+
+" FILETYPE SETTINGS
+filetype plugin indent on
+augroup markdown         " use flavored-markdown
+	au!
+	au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 " SEARCH
 set incsearch           "search as character are entered
@@ -185,6 +196,7 @@ noremap \q :call SyntasticToggleMode()<CR>
 noremap \Q :call ToggleErrors()<CR>
 noremap <leader>h :setlocal hlsearch!<CR>
 
+" Codestyle mappings
 noremap <leader>ss :StripWhitespace<CR>
 function! Reindent()
 	let save_cursor = getpos(".")
@@ -192,20 +204,35 @@ function! Reindent()
 	call setpos('.', save_cursor)
 endfunction
 noremap <leader>= :call Reindent()<CR>
-noremap <leader>- o<esc>k
-noremap <leader>_ O<esc>j
+function! InsertLine(flag)
+	let save_cursor = getpos(".")
+	if a:flag == 0
+		:normal o
+	else
+		:normal O
+		let save_cursor[1] = save_cursor[1] + 1
+	endif
+	call setpos('.', save_cursor)
+endfunction
+noremap <leader>- :call InsertLine(0)<CR>
+noremap <leader>_ :call InsertLine(1)<CR>
 
+" Code search/navigation
+noremap <leader>e :e .<CR>
+noremap <leader>/ :Ack<Space>
+nnoremap <leader>. :CtrlPTag<cr>
+noremap <leader>d <C-]>
+noremap <leader>D <C-T>
+
+" Copy/paste using system clipboard
+noremap <leader>y "+y
+noremap <leader>p "+p
+
+" Tabpage binding
 noremap [t :bp<CR>
 noremap ]t :bn<CR>
 noremap <leader>t :enew<CR>
 noremap <leader>q :bd<CR>
-noremap <leader>e :e .<CR>
-noremap <leader>/ :Ack<Space>
-noremap <leader>d <C-]>
-noremap <leader>D <C-T>
-nnoremap <leader>. :CtrlPTag<cr>
-noremap <leader>y "+y
-noremap <leader>p "+p
 
 inoremap <leader><leader> <ESC>
 vnoremap <leader><leader> <ESC>

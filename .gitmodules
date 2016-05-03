@@ -1,3 +1,6 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/danhp/pure.git
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/sorin-ionescu/prezto.git
