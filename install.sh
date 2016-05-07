@@ -1,13 +1,11 @@
 #!/bin/bash
 
-for h in {ackrc,aliases,bash_profile,bash_prompt,bashrc,ctags,exports,functions,gitconfig,gitignore,git_template,inputrc,lessfilter,path,tmux.conf,vim,vimrc,zpreztorc,zshrc,prezto}; do
-	if [ ! -d ~/.$h ]; then
-		ln -s $(pwd)/$h ~/.$h
-	else
-		echo ln: ~/.$h: File exists.
-	fi
+# Common files
+for h in {ackrc,aliases,ctags,exports,functions,lessfilter,path,tmux.conf}; do
+	ln -s $(pwd)/common/$h ~/.$h
 done
 
+# Visible files
 for v in bin; do
 	if [ ! -d ~/$v ]; then
 		ln -s $(pwd)/$v ~/$v
@@ -16,6 +14,35 @@ for v in bin; do
 	fi
 done
 
+# Bash files
+for b in {bash_profile,bash_prompt,bashrc,inputrc}; do
+	ln -s $(pwd)/bash/$b ~/.$b
+done
+
+# Zsh files
+for z in {zpreztorc,zshrc}; do
+	ln -s $(pwd)/zsh/$z ~/.$z
+done
+
+# Vim files
+for v in {vim,vimrc}; do
+	if [ ! -d ~/.$v ]; then
+		ln -s $(pwd)/vim/$v ~/.$v
+	else
+		echo ln: ~/.$v: File exists.
+	fi
+done
+
+# Git files
+for g in {gitconfig,gitignore,git_template}; do
+	if [ ! -d ~/.$g ]; then
+		ln -s $(pwd)/git/$g ~/.$g
+	else
+		echo ln: ~/.$g: File exists.
+	fi
+done
+
+# Submodules
 ln -s $(pwd)/pure/async.zsh ~/.async
 ln -s $(pwd)/pure/pure.zsh ~/.zsh_prompt
 if [ ! -d ~/.zprezto ]; then

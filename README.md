@@ -1,5 +1,22 @@
 # Configuration Files
 
-Git prompt coloring inside Bash:
+## Install
 
-![Screenshot of the prompt coloring](http://i.imgur.com/YFOtB35.png)
+1. Clone the repository
+
+```
+git clone --recursive https://github.com/danhp/dotfiles.git ~/.dotfiles
+```
+
+2. Symlink the files
+
+```
+./install.sh
+```
+
+3. Install brew apps and OS X settings.
+
+```
+./brew.sh && ./osx.sh
+```
+
