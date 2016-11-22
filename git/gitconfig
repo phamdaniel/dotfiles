@@ -15,7 +15,7 @@
 [color "diff"]
 	meta = yellow
 	frag = blue
-	old = red
+	old = red strike
 	new = green
 [alias]
 	# Git checkout
@@ -92,11 +92,17 @@
 	# Delete all local branches
 	dab = !git checkout master && git branch | grep -v "master" | xargs git branch -D
 
-	# Pull in changes in current repo and all submodules
+	# Pull in changes in current repo and update submodules refs
 	p = !git pull && git submodule update --init --recursive
+
+	# Pull from upstream
+	pu = pull upstream master
 
 	# Update all submodules
 	su = submodule update --init --recursive
+
+	## Sync all submodules
+	ss = submodule sync --recursive
 
 	# Upgrade all submodules
 	sp = submodule foreach git pull origin master
@@ -123,6 +129,7 @@
 	default = current
 [diff]
 	renames = copies
+	compactionHeuristic = true
 [difftool]
 	prompt = false
 [filter "media"]

@@ -73,10 +73,10 @@ function extract() {
 
 function dark() {
 	if [ "$THEMECOLOUR" = "light" ]; then
-		osascript -e 'tell application "Terminal" to set current settings of tab 0 of front window to first settings set whose name is "Solarized Dark"'
+		echo -e "\033]50;SetProfile=Default\a"
 		export THEMECOLOUR=dark;
 	else
-		osascript -e 'tell application "Terminal" to set current settings of tab 0 of front window to first settings set whose name is "Solarized Light"'
+		echo -e "\033]50;SetProfile=Light\a"
 		export THEMECOLOUR=light;
 	fi
 }

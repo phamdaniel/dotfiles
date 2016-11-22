@@ -39,6 +39,8 @@ brew install zsh-completions
 brew install lua
 brew install go
 brew install python
+brew install ocaml
+brew install opam
 
 # Useful applications
 brew cask install google-chrome
