@@ -40,7 +40,7 @@
 	ra = remote add
 
 	# List braches in reverse chronological order
-	branches = !"git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+	b = !"git for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
 
 	# List remotes
 	remotes = remote -v
@@ -55,7 +55,7 @@
 	l = !"git --no-pager log --oneline -n 20 --graph"
 
 	# Show blame
-	b = blame --date relative
+	blame = blame --date relative
 
 	# Show diff
 	d = !"git --no-pager diff --minimal --patch-with-stat"
@@ -89,9 +89,6 @@
 	# Delete merged branches on remote and locally except master
 	dm = "!r() { git checkout master && git branch --merged | grep -v "master" | xargs -n 1 -I % sh -c 'git branch -d %; git push --delete origin %;'; }; r"
 
-	# Delete all local branches
-	dab = !git checkout master && git branch | grep -v "master" | xargs git branch -D
-
 	# Pull in changes in current repo and update submodules refs
 	p = !git pull && git submodule update --init --recursive
 
@@ -109,6 +106,9 @@
 
 	# Shortcut to reindex ctags
 	ctags="!.git/hooks/ctags"
+
+	# Show Aliases
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[  ]/ = /' | sort
 [apply]
 	whitespace = fix
 [core]

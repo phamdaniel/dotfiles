@@ -18,3 +18,6 @@ alias sudo='sudo '
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Get Updates for homebrew
+alias update='brew update; brew upgrade; brew cleanup;'
