@@ -34,7 +34,7 @@ for v in {vim,vimrc}; do
 done
 
 # Git files
-for g in {gitconfig,gitignore,git_template}; do
+for g in {gitconfig,gitignore}; do
 	if [ ! -d ~/.$g ]; then
 		ln -s $(pwd)/git/$g ~/.$g
 	else

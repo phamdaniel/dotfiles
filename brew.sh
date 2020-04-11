@@ -37,21 +37,23 @@ brew install zsh-completions
 
 # Useful languages
 brew install lua
-brew install go
+# brew install go
 brew install python
-brew install ocaml
-brew install opam
+# brew install ocaml
+# brew install opam
 
 # Useful applications
 brew cask install google-chrome
 brew cask install google-drive
 brew cask install spectacle
-brew cask install flux
+# brew cask install flux
 brew cask install xee
 brew cask install caprine
 brew cask install slack
-brew cask install evernote
-brew cask install transmission
-brew cask install atom
+# brew cask install evernote
+# brew cask install transmission
+# brew cask install atom
 brew cask install vlc
 brew cask install paintbrush
+brew cask install qlvideo
+brew cask install private-internet-access

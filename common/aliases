@@ -21,3 +21,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Get Updates for homebrew
 alias update='brew update; brew upgrade; brew cleanup;'
+
+# IP addresses
+alias localip="ipconfig getifaddr en0"
