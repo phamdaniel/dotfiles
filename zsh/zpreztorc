@@ -28,3 +28,6 @@ zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a Tmux session when Zsh is launched in a SSH connection.
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+#
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes

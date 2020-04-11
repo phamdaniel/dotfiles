@@ -98,7 +98,7 @@
 	# Update all submodules
 	su = submodule update --init --recursive
 
-	## Sync all submodules
+	# Sync all submodules
 	ss = submodule sync --recursive
 
 	# Upgrade all submodules
